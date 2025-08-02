@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  swcMinify: false, // Disable minification to get better error messages
+  swcMinify: false,
   images: {
     domains: ['via.placeholder.com'],
   },
-  // Use standalone for Render deployment
-  output: 'standalone',
+  // Remove standalone for now to fix 502 error
   experimental: {
     isrMemoryCacheSize: 0,
   },

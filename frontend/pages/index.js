@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
-import ClientOnly from '../components/ClientOnly';
-
-// Dynamic imports to prevent SSR issues
-const Navbar = dynamic(() => import('../components/Navbar'), { ssr: false });
-const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
-const SearchBar = dynamic(() => import('../components/SearchBar'), { ssr: false });
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import SearchBar from '../components/SearchBar';
 
 export default function Home() {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSearch = (query) => {
     if (query.trim()) {
@@ -19,11 +20,14 @@ export default function Home() {
     }
   };
 
+  if (!mounted) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <ClientOnly>
-      <div>
-        <Navbar />
-        
+    <div>
+      <Navbar />
+      
       <main>
         <section className="hero">
           <div className="container">
@@ -109,7 +113,6 @@ export default function Home() {
       </main>
       
       <Footer />
-      </div>
-    </ClientOnly>
+    </div>
   );
 }

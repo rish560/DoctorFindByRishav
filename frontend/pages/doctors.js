@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import dynamic from 'next/dynamic';
-import ClientOnly from '../components/ClientOnly';
-
-// Dynamic imports to prevent SSR issues
-const Navbar = dynamic(() => import('../components/Navbar'), { ssr: false });
-const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
-const SearchBar = dynamic(() => import('../components/SearchBar'), { ssr: false });
-const DoctorCard = dynamic(() => import('../components/DoctorCard'), { ssr: false });
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import SearchBar from '../components/SearchBar';
+import DoctorCard from '../components/DoctorCard';
 
 const API_BASE_URL = '/api';
 
@@ -108,10 +104,9 @@ export default function Doctors() {
   };
 
   return (
-    <ClientOnly>
-      <div>
-        <Navbar />
-        
+    <div>
+      <Navbar />
+      
       <main>
         <section style={{ 
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
@@ -141,7 +136,6 @@ export default function Doctors() {
       </main>
       
       <Footer />
-      </div>
-    </ClientOnly>
+    </div>
   );
 }
