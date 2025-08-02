@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import SearchBar from '../components/SearchBar';
 import DoctorCard from '../components/DoctorCard';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = '/api';
 
 export default function Doctors() {
   const [doctors, setDoctors] = useState([]);

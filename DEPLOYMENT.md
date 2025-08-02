@@ -1,20 +1,28 @@
-# DoctorFind by Rishav - Deployment Guide
+# DoctorFind by Rishav - Simple Render Deployment
 
-## Deploy to Render
+## Single Next.js App Deployment to Render
 
-### Backend Deployment
-1. Create a new Web Service on Render
-2. Connect your GitHub repository
-3. Set build command: `npm install`
-4. Set start command: `npm start`
-5. Set environment to Node.js
+### Easy One-Click Deployment
 
-### Frontend Deployment
-1. Create a new Static Site on Render
-2. Connect your GitHub repository
-3. Set build command: `npm run build`
-4. Set publish directory: `out` or `.next`
-5. Add environment variable: `NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com/api`
+1. **Create Web Service on Render**
+   - Go to [render.com](https://render.com)
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository: "DoctorFindByRishav"
 
-### Environment Variables
-- NEXT_PUBLIC_API_URL: Your backend API URL from Render
+2. **Configure Deployment**
+   ```
+   Name: doctorfind-by-rishav
+   Root Directory: frontend
+   Environment: Node
+   Build Command: npm install && npm run build
+   Start Command: npm start
+   ```
+
+3. **Deploy**
+   - Click "Create Web Service"
+   - Wait 5-10 minutes for deployment
+   - Your app will be live at: https://doctorfind-by-rishav.onrender.com
+
+### That's it! 🎉
+
+No separate backend deployment needed - everything runs in one Next.js app!

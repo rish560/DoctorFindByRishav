@@ -1,12 +1,12 @@
-# DoctorFind by Rishav - Doctor Search Application
+# DoctorFind by Rishav - Full-Stack Next.js Application
 
-A full-stack responsive web application built with Next.js and Node.js for searching and finding doctors.
+A complete full-stack responsive web application built with Next.js for searching and finding doctors.
 
 ## 🚀 Project Overview
 
-This project consists of two main parts:
-- **Frontend**: Next.js application with responsive design
-- **Backend**: Node.js + Express API server
+This is a single Next.js application that includes:
+- **Frontend**: Next.js pages with responsive design
+- **Backend**: Next.js API routes (no separate server needed)
 
 ## 📋 Features
 
@@ -28,7 +28,7 @@ This project consists of two main parts:
 - ✅ GET /api/doctors → fetch all doctors
 - ✅ GET /api/doctors?search=term → filtered search
 - ✅ GET /api/doctors/:id → get doctor by ID
-- ✅ CORS enabled for frontend integration
+- ✅ Built with Next.js API routes
 
 ## 🛠️ Technologies Used
 
@@ -40,34 +40,29 @@ This project consists of two main parts:
 - Modern JavaScript (ES6+)
 
 ### Backend
-- Node.js
-- Express.js
+- Next.js API Routes
 - JSON data storage
-- CORS middleware
+- Built-in API handling
 
 ## 📁 Project Structure
 
 ```
-Internship project/
-├── frontend/
-│   ├── components/
-│   │   ├── Navbar.js
-│   │   ├── Footer.js
-│   │   ├── SearchBar.js
-│   │   └── DoctorCard.js
+DoctorFind by Rishav/
+├── frontend/                    # Complete Next.js Full-Stack App
+│   ├── components/              # React components
 │   ├── pages/
-│   │   ├── _app.js
-│   │   ├── index.js          # Home page
-│   │   └── doctors.js        # Doctor listing page
+│   │   ├── api/                # Backend API routes
+│   │   │   ├── doctors.js      # Main doctors API
+│   │   │   ├── doctors/[id].js # Individual doctor API
+│   │   │   └── health.js       # Health check API
+│   │   ├── index.js            # Home page
+│   │   └── doctors.js          # Doctor listing page
+│   ├── data/
+│   │   └── doctors.json        # Doctor data
 │   ├── styles/
 │   │   └── globals.css
 │   └── package.json
-├── backend/
-│   ├── data/
-│   │   └── doctors.json      # Sample doctor data
-│   ├── server.js
-│   ├── package.json
-│   └── README.md
+├── backend/                     # (Legacy - not needed anymore)
 └── README.md
 ```
 
@@ -77,24 +72,7 @@ Internship project/
 - Node.js installed
 - npm or yarn package manager
 
-### Backend Setup
-1. Navigate to backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the server:
-   ```bash
-   npm start
-   ```
-   Server will run on http://localhost:5000
-
-### Frontend Setup
+### Single Application Setup
 1. Navigate to frontend directory:
    ```bash
    cd frontend
@@ -109,7 +87,11 @@ Internship project/
    ```bash
    npm run dev
    ```
-   Application will run on http://localhost:3000
+   
+4. Open browser:
+   - Application: http://localhost:3000
+   - API Health Check: http://localhost:3000/api/health
+   - API Doctors: http://localhost:3000/api/doctors
 
 ## 🌐 API Endpoints
 
@@ -117,6 +99,8 @@ Internship project/
 - `GET /api/doctors?search=term` - Search doctors by name, specialty, or location
 - `GET /api/doctors/:id` - Get doctor by ID
 - `GET /api/health` - Health check
+
+All APIs are built into the Next.js application using API routes.
 
 ## 📱 Responsive Design
 
