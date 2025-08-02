@@ -1,18 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  swcMinify: true,
+  swcMinify: false, // Disable minification to get better error messages
   images: {
     domains: ['via.placeholder.com'],
   },
-  // Disable static generation completely
+  // Use standalone for Render deployment
   output: 'standalone',
   experimental: {
     isrMemoryCacheSize: 0,
   },
-  // Force server-side rendering
-  trailingSlash: false,
-  generateEtags: false,
 }
 
 module.exports = nextConfig
