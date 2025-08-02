@@ -5,8 +5,14 @@ const nextConfig = {
   images: {
     domains: ['via.placeholder.com'],
   },
-  // Disable static export for dynamic pages
-  output: 'standalone'
+  // Disable static generation completely
+  output: 'standalone',
+  experimental: {
+    isrMemoryCacheSize: 0,
+  },
+  // Force server-side rendering
+  trailingSlash: false,
+  generateEtags: false,
 }
 
 module.exports = nextConfig
