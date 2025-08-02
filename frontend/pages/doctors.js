@@ -12,12 +12,20 @@ export default function Doctors() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { search } = router.query;
 
+  // Handle hydration
   useEffect(() => {
-    fetchDoctors(search);
-  }, [search]);
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      fetchDoctors(search);
+    }
+  }, [search, mounted]);
 
   const fetchDoctors = async (searchQuery = '') => {
     try {
@@ -47,6 +55,15 @@ export default function Doctors() {
   };
 
   const renderContent = () => {
+    if (!mounted) {
+      return (
+        <div className="loading">
+          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🔄</div>
+          Loading...
+        </div>
+      );
+    }
+
     if (loading) {
       return (
         <div className="loading">
@@ -99,10 +116,10 @@ export default function Doctors() {
         }}>
           <div className="container">
             <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-              {search ? `Search Results for "${search}"` : 'Find Your Doctor'}
+              {search && mounted ? `Search Results for "${search}"` : 'Find Your Doctor'}
             </h1>
             <p style={{ fontSize: '1.1rem', marginBottom: '2rem', opacity: 0.9 }}>
-              {doctors.length > 0 && !loading ? 
+              {doctors.length > 0 && !loading && mounted ? 
                 `Found ${doctors.length} doctor${doctors.length !== 1 ? 's' : ''}` :
                 'Search for doctors by name, specialty, or location'
               }
